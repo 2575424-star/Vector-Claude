@@ -1,0 +1,26 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {createHash,randomUUID} from 'node:crypto';
+import {makeDb} from './db.mjs';
+import {ensureAccess,membership,authorize} from '../src/access.js';
+import {publicLogin,sessionIdentity} from '../src/local-login.js';
+const token=randomUUID()+randomUUID();
+const env={CRM_TEMP_LOGIN_HASH:createHash('sha256').update(token).digest('hex'),CRM_TEMP_LOGIN_EXPIRES:new Date(Date.now()+86400000).toISOString()};
+const request=(value=token,origin='https://crm.test')=>new Request('https://crm.test/api/login/redeem',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({token:value})});
+test('temporary link requires matching secret, origin and expiry, is single-use and revocable',async()=>{
+ const db=makeDb();await ensureAccess(db);
+ await assert.rejects(publicLogin(request(randomUUID()+randomUUID()),db,env));
+ await assert.rejects(publicLogin(request(token,'https://elsewhere.test'),db,env));
+ await assert.rejects(publicLogin(request(),db,{...env,CRM_TEMP_LOGIN_EXPIRES:'2020-01-01'}));
+ const response=await publicLogin(request(),db,env);assert.equal(response.status,200);
+ const cookie=response.headers.get('set-cookie').split(';')[0];
+ assert.match(response.headers.get('set-cookie'),/HttpOnly; SameSite=Lax/);
+ const sessionReq=new Request('https://crm.test/api/cars',{headers:{Cookie:cookie}});
+ const user=await sessionIdentity(sessionReq,db);assert.equal(user.name,'Павел · временный вход');
+ const member=await membership(db,user);assert.equal(member.role,'editor');
+ assert.throws(()=>authorize(member,new Request('https://crm.test/api/access/users')));
+ await assert.rejects(publicLogin(request(),db,env));
+ await db.prepare('UPDATE crm_users SET active=0 WHERE id=?').bind(user.id).run();
+ assert.equal(await sessionIdentity(sessionReq,db),null);
+ await assert.rejects(publicLogin(request(),db,env));
+});

@@ -1,0 +1,683 @@
+{
+  "category": "Транспорт - Автомобили - С пробегом",
+  "date": "2026-09-10",
+  "sheet": "Объявления",
+  "fields": [
+    {
+      "key": "Address",
+      "required": true,
+      "format": "Подробнее о параметре",
+      "column": "A"
+    },
+    {
+      "key": "Latitude",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "B"
+    },
+    {
+      "key": "Longitude",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "C"
+    },
+    {
+      "key": "Id",
+      "required": true,
+      "format": "Подробнее о параметре",
+      "column": "D"
+    },
+    {
+      "key": "DateBegin",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "E"
+    },
+    {
+      "key": "DateEnd",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "F"
+    },
+    {
+      "key": "ListingFee",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "G"
+    },
+    {
+      "key": "AdStatus",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "H"
+    },
+    {
+      "key": "AvitoId",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "I"
+    },
+    {
+      "key": "ManagerName",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "J"
+    },
+    {
+      "key": "ContactPhone",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "K"
+    },
+    {
+      "key": "ContactMethod",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "L"
+    },
+    {
+      "key": "Category",
+      "required": true,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "M"
+    },
+    {
+      "key": "Description",
+      "required": true,
+      "format": "Текст",
+      "column": "N"
+    },
+    {
+      "key": "Price",
+      "required": true,
+      "format": "Подробнее о параметре",
+      "column": "O"
+    },
+    {
+      "key": "DisplayAreas",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "P"
+    },
+    {
+      "key": "Accident",
+      "required": true,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "Q"
+    },
+    {
+      "key": "ImageNames",
+      "required": true,
+      "format": "Подробнее о параметре",
+      "column": "R"
+    },
+    {
+      "key": "ImageUrls",
+      "required": true,
+      "format": "Подробнее о параметре",
+      "column": "S"
+    },
+    {
+      "key": "VideoURL",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "T"
+    },
+    {
+      "key": "Generation",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "U"
+    },
+    {
+      "key": "Modification",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "V"
+    },
+    {
+      "key": "Complectation",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "W"
+    },
+    {
+      "key": "InternetCalls",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "X"
+    },
+    {
+      "key": "CallsDevices",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "Y"
+    },
+    {
+      "key": "CarType",
+      "required": true,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "Z"
+    },
+    {
+      "key": "AdType",
+      "required": true,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "AA"
+    },
+    {
+      "key": "Kilometrage",
+      "required": true,
+      "format": "Подробнее о параметре",
+      "column": "AB"
+    },
+    {
+      "key": "TradeinDiscount",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "AC"
+    },
+    {
+      "key": "CreditDiscount",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "AD"
+    },
+    {
+      "key": "InsuranceDiscount",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "AE"
+    },
+    {
+      "key": "MaxDiscount",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "AF"
+    },
+    {
+      "key": "OnlyOnAvito",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "AG"
+    },
+    {
+      "key": "OnOrder",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "AH"
+    },
+    {
+      "key": "Color",
+      "required": true,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "AI"
+    },
+    {
+      "key": "VideoFileURL",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "AJ"
+    },
+    {
+      "key": "Make",
+      "required": true,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AK"
+    },
+    {
+      "key": "Model",
+      "required": true,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AL"
+    },
+    {
+      "key": "GenerationId",
+      "required": true,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AM"
+    },
+    {
+      "key": "ModificationId",
+      "required": true,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AN"
+    },
+    {
+      "key": "ComplectationId",
+      "required": false,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AO"
+    },
+    {
+      "key": "FuelType",
+      "required": true,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AP"
+    },
+    {
+      "key": "Transmission",
+      "required": true,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AQ"
+    },
+    {
+      "key": "EngineSize",
+      "required": false,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AR"
+    },
+    {
+      "key": "Year",
+      "required": true,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AS"
+    },
+    {
+      "key": "Doors",
+      "required": true,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AT"
+    },
+    {
+      "key": "BodyType",
+      "required": true,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AU"
+    },
+    {
+      "key": "DriveType",
+      "required": true,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AV"
+    },
+    {
+      "key": "Power",
+      "required": false,
+      "format": "Одно значение из листа \"Справочники\"",
+      "column": "AW"
+    },
+    {
+      "key": "WheelType",
+      "required": true,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "AX"
+    },
+    {
+      "key": "PowerSteering",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "AY"
+    },
+    {
+      "key": "ClimateControl",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "AZ"
+    },
+    {
+      "key": "ClimateControlOptions",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BA"
+    },
+    {
+      "key": "Interior",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "BB"
+    },
+    {
+      "key": "InteriorOptions",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BC"
+    },
+    {
+      "key": "InteriorColor",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "BD"
+    },
+    {
+      "key": "Heating",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BE"
+    },
+    {
+      "key": "PowerWindows",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "BF"
+    },
+    {
+      "key": "ElectricDrive",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BG"
+    },
+    {
+      "key": "MemorySettings",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BH"
+    },
+    {
+      "key": "DrivingAssistance",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BI"
+    },
+    {
+      "key": "AntitheftSystem",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BJ"
+    },
+    {
+      "key": "Airbags",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BK"
+    },
+    {
+      "key": "ActiveSafety",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BL"
+    },
+    {
+      "key": "Multimedia",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BM"
+    },
+    {
+      "key": "AudioSystem",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "BN"
+    },
+    {
+      "key": "AudioSystemOptions",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BO"
+    },
+    {
+      "key": "Lights",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "BP"
+    },
+    {
+      "key": "LightsOptions",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BQ"
+    },
+    {
+      "key": "Wheels",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "BR"
+    },
+    {
+      "key": "WheelsOptions",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BS"
+    },
+    {
+      "key": "Maintenance",
+      "required": false,
+      "format": "Одно или несколько значений из выпадающего списка в ячейке",
+      "column": "BT"
+    },
+    {
+      "key": "Owners",
+      "required": true,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "BU"
+    },
+    {
+      "key": "PTS",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "BV"
+    },
+    {
+      "key": "AuctionPriceLastDate",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "BW"
+    },
+    {
+      "key": "AuctionPrice",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "BX"
+    },
+    {
+      "key": "VIN",
+      "required": true,
+      "format": "Подробнее о параметре",
+      "column": "BY"
+    },
+    {
+      "key": "GRN",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "BZ"
+    },
+    {
+      "key": "RegInRussia",
+      "required": false,
+      "format": "Одно значение из выпадающего списка в ячейке",
+      "column": "CA"
+    },
+    {
+      "key": "OfferRepairGuarantee",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "CB"
+    },
+    {
+      "key": "OfferGiftCasco",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "CC"
+    },
+    {
+      "key": "OfferGiftTires",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "CD"
+    },
+    {
+      "key": "OfferDiscountCasco",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "CE"
+    },
+    {
+      "key": "OfferGiftTO",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "CF"
+    },
+    {
+      "key": "OfferGiftAccessories",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "CG"
+    },
+    {
+      "key": "OfferFastRegistration",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "CH"
+    },
+    {
+      "key": "OfferProgramLadaRestart",
+      "required": false,
+      "format": "Подробнее о параметре",
+      "column": "CI"
+    }
+  ],
+  "choices": {
+    "ListingFee": [
+      "Package",
+      "PackageBBL",
+      "BBL"
+    ],
+    "AdStatus": [
+      "Free",
+      "Highlight",
+      "XL",
+      "x2_1",
+      "x2_7",
+      "x5_1",
+      "x5_7",
+      "x10_1",
+      "x10_7",
+      "x15_1",
+      "x15_7",
+      "x20_1",
+      "x20_7"
+    ],
+    "ContactMethod": [
+      "По телефону и в сообщениях",
+      "По телефону",
+      "В сообщениях"
+    ],
+    "Category": [
+      "Автомобили"
+    ],
+    "Accident": [
+      "Не битый",
+      "Битый"
+    ],
+    "InternetCalls": [
+      "Да",
+      "Нет"
+    ],
+    "CarType": [
+      "С пробегом"
+    ],
+    "AdType": [
+      "Продаю личный автомобиль",
+      "Автомобиль приобретён на продажу"
+    ],
+    "OnlyOnAvito": [
+      "Да",
+      "Нет"
+    ],
+    "OnOrder": [
+      "Да",
+      "Нет"
+    ],
+    "Color": [
+      "Белый",
+      "Серебряный",
+      "Серый",
+      "Чёрный",
+      "Коричневый",
+      "Золотой",
+      "Бежевый",
+      "Красный",
+      "Бордовый",
+      "Оранжевый",
+      "Жёлтый",
+      "Зелёный",
+      "Голубой",
+      "Синий",
+      "Фиолетовый",
+      "Пурпурный",
+      "Розовый"
+    ],
+    "WheelType": [
+      "Левый",
+      "Правый"
+    ],
+    "PowerSteering": [
+      "Гидравлический",
+      "Электрический",
+      "Электрогидравлический"
+    ],
+    "ClimateControl": [
+      "Кондиционер",
+      "Климат-контроль однозонный",
+      "Климат-контроль многозонный"
+    ],
+    "Interior": [
+      "Кожа",
+      "Ткань",
+      "Велюр",
+      "Комбинированный"
+    ],
+    "InteriorColor": [
+      "Светлый",
+      "Тёмный",
+      "Цветной"
+    ],
+    "PowerWindows": [
+      "Только передние",
+      "Передние и задние"
+    ],
+    "AudioSystem": [
+      "2 колонки",
+      "4 колонки",
+      "6 колонок",
+      "8+ колонок"
+    ],
+    "Lights": [
+      "Галогенные",
+      "Ксеноновые",
+      "Светодиодные"
+    ],
+    "Wheels": [
+      "7\"",
+      "8\"",
+      "9\"",
+      "10\"",
+      "11\"",
+      "12\"",
+      "13\"",
+      "14\"",
+      "15\"",
+      "16\"",
+      "17\"",
+      "18\"",
+      "19\"",
+      "20\"",
+      "21\"",
+      "22\"",
+      "23\"",
+      "24\"",
+      "25\"",
+      "26\"",
+      "27\"",
+      "28\"",
+      "29\"",
+      "30\""
+    ],
+    "Owners": [
+      "1",
+      "2",
+      "3",
+      "4+"
+    ],
+    "PTS": [
+      "Оригинал",
+      "Дубликат",
+      "Электронный",
+      "Не оформлен"
+    ],
+    "RegInRussia": [
+      "На учете в РФ",
+      "Не на учете в РФ"
+    ]
+  }
+}

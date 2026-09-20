@@ -1,0 +1,5 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {POWER_SEED,resolvePower,powerIdentity,cleanPower} from '../src/encar-power.js';
+const car={...POWER_SEED[0],powerHp:''};
+test('power catalog matches exact trim/year/displacement/market and uses total output',()=>{assert.equal(resolvePower(car,POWER_SEED).powerHp,298);for(const patch of [{year:2023},{trim:'xDrive 40d xLine'},{engine:1995},{market:'США'}])assert.equal(resolvePower({...car,...patch},POWER_SEED).powerHp,'');});
+test('manual corrections stay local; imported source engine output may use confirmed system entry',()=>{assert.equal(resolvePower({...car,powerHp:300},POWER_SEED).powerHp,300);assert.equal(resolvePower({...car,powerHp:286},POWER_SEED,true).powerHp,298);});
+test('catalog requires specific modification and sane power',()=>{assert.throws(()=>cleanPower({...car,trim:''}));assert.throws(()=>cleanPower({...car,powerHp:0}));assert.equal(powerIdentity({...car,trim:'xDrive30d xLine'}),powerIdentity(car));});

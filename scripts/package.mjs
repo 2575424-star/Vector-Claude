@@ -1,0 +1,2 @@
+import fs from 'node:fs';import{execFileSync}from'node:child_process';
+fs.mkdirSync('dist/.openai',{recursive:true});fs.copyFileSync('.openai/hosting.json','dist/.openai/hosting.json');const w=JSON.parse(fs.readFileSync('wrangler.json'));w.main='index.js';w.assets.directory='../client';fs.writeFileSync('dist/server/wrangler.json',JSON.stringify(w,null,2));execFileSync('tar',['-czf',process.argv[2]||'../vector-crm-build.tgz','.openai/hosting.json','dist/.openai/hosting.json','dist/server','dist/client']);

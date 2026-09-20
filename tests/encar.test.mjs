@@ -1,0 +1,21 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {quoteResult,emptyQuote,cleanQuote,readEncarImport} from '../src/encar.js';
+import {utilization} from '../src/encar-util.js';
+import {authorize} from '../src/access.js';
+const q=()=>({...emptyQuote(),formulaVersion:1,bishkekUsd:0,deliveryUsd:0,documentsRub:0,krw:141600000,krwPerUsd:1416,eur:30000,eurUsd:1.16,usdRub:90,utilRub:0});
+test('TPO is 48 percent EUR converted once; zero expenses supported',()=>{const r=quoteResult(q());assert.equal(r.tpo,16704);assert.equal(r.rub,10503360);});
+test('changing EUR/USD recalculates total',()=>{const r=quoteResult({...q(),eurUsd:1.1});assert.equal(r.tpo,15840);assert.equal(r.rub,10425600);});
+test('unknown utilization blocks total',()=>assert.equal(quoteResult({...q(),utilRub:''}).rub,null));
+test('manual TPO works without EUR rate',()=>assert.equal(quoteResult({...q(),manualTpo:100,eurUsd:''}).tpo,100));
+test('logistics not added twice when already included in KRW',()=>assert.equal(quoteResult({...q(),deliveryUsd:1200}).rub,10611360));
+test('import validates Encar origin and does not carry arbitrary properties',()=>{assert.throws(()=>cleanQuote({...q(),url:'https://evil.example/cars/detail/123'}));const x=readEncarImport('#encar?import='+encodeURIComponent(JSON.stringify({...q(),brand:'BMW',model:'740d',role:'owner',url:'https://fem.encar.com/cars/detail/123'})));assert.equal(x.encarId,'123');assert.equal(x.role,undefined);});
+test('viewer cannot save quotes but may read',()=>{assert.throws(()=>authorize({active:true,role:'viewer'},new Request('https://example.com/api/encar/quotes',{method:'POST'})));assert.doesNotThrow(()=>authorize({active:true,role:'viewer'},new Request('https://example.com/api/encar/quotes')));});
+
+const v2=()=>({...emptyQuote(),brand:'BMW',model:'X5',krw:100000000,krwPerUsd:1000,eur:32000,eurUsd:1.1,usdRub:90,engine:2993,powerHp:298,powertrain:'ice',utilAge:'new'});
+test('new formula: discount, KRW logistics, USD fees, 2 percent before documents and utilization',()=>{const r=quoteResult(v2());assert.equal(r.tpo,16896);assert.equal(r.priceUsd,102000);assert.equal(r.subtotalUsd,121096);assert.equal(r.markupRub,217972.8);assert.equal(r.util.rub,2620800);assert.equal(r.rub,13822412.8);assert.deepEqual(r.missing,[]);});
+test('all new defaults editable, zero logistics/markup valid',()=>{const r=quoteResult({...v2(),discountPct:0,koreaKrw:0,bishkekUsd:0,deliveryUsd:0,markupPct:0,documentsRub:0,utilRub:0});assert.equal(r.rub,10520640);});
+test('TPO stays live when rate changes, manual TPO intentionally overrides',()=>{assert.equal(quoteResult({...v2(),eurUsd:1.2}).tpo,18432);assert.equal(quoteResult({...v2(),eurUsd:'',manualTpo:100}).tpo,100);const r=quoteResult({...v2(),eurUsd:''});assert.equal(r.rub,null);assert.match(r.missing.join(),/евро/);});
+test('missing utilization preserves subtotal, never substitutes zero',()=>{const r=quoteResult({...v2(),powerHp:''});assert.equal(r.rub,null);assert.equal(r.beforeUtilRub,11201612.8);assert.match(r.missing.join(),/мощность/i);});
+test('utilization uses actual displacement, power band and age, adds EAEU adjustment once',()=>{const base={...v2(),powerHp:160};assert.equal(utilization(base).rub,2250400);assert.equal(utilization({...base,engine:3001}).rub,2584000);assert.equal(utilization({...base,powerHp:161}).rub,2306800);assert.equal(utilization({...v2(),utilAge:'old'}).rub,3770400);assert.equal(utilization({...v2(),eaeuRub:100}).rub,2620900);assert.equal(utilization({...v2(),eaeuRub:100,utilRub:5}).rub,5);});
+test('unsupported regimes, hybrid power, unknown age and future tariffs require manual fee',()=>{for(const patch of [{powertrain:'other'},{utilRegime:'personal'},{utilAge:''},{utilYear:2027},{powerHp:0}])assert.equal(utilization({...v2(),...patch}).rub,null);});
+test('new fields survive clean/save validation; invalid percentages rejected',()=>{const q=cleanQuote(v2());assert.equal(q.formulaVersion,2);assert.equal(q.koreaKrw,6000000);assert.equal(q.powerHp,298);assert.equal(quoteResult(q).rub,13822412.8);assert.throws(()=>cleanQuote({...v2(),discountPct:101}));assert.throws(()=>cleanQuote({...v2(),eaeuRub:-1}));});
