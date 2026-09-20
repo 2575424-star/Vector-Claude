@@ -2,7 +2,7 @@ import {photoResponse} from './encar-photos.js';
 import {powerRows,storePower,resolvePower,cleanPower} from './encar-power.js';
 import {fetchListing} from './encar-import.js';
 import {cleanQuote,quoteResult} from './encar.js';
-import table from './encar-table.json';
+import table from './encar-table.json' with {type:'json'};
 const json=(v,status=200)=>new Response(JSON.stringify(v),{status,headers:{'Content-Type':'application/json','Cache-Control':'no-store'}});
 let rateCache;
 export async function encarRequest(req,env,actor){const u=new URL(req.url),db=env.DB;

@@ -6,7 +6,7 @@ import React,{useState,useEffect} from 'react';
 import {ExternalLink,Download,Save,Plus,RefreshCw} from 'lucide-react';
 import {ENCAR_FIELDS,LEGACY_FIELDS,emptyQuote,quoteResult,readEncarImport,newFormulaCopy} from './encar.js';
 import {UTIL_SOURCE} from './encar-util.js';
-import table from './encar-table.json';
+import table from './encar-table.json' with {type:'json'};
 import './encar.css';
 const fmt=n=>n==null?'—':new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(n);
 export default function Encar({api,readOnly}){

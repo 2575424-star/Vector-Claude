@@ -1,6 +1,6 @@
 import {photoProxy} from './encar-photos.js';
 import {PDFDocument,rgb,PDFName,PDFHexString,beginText,endText,setFontAndSize,setFillingRgbColor,moveText,showText} from './vendor/pdf-engine.js';
-import regular from './vendor/DejaVuSans.json';import bold from './vendor/DejaVuSans-Bold.json';
+import regular from './vendor/DejaVuSans.json' with {type:'json'};import bold from './vendor/DejaVuSans-Bold.json' with {type:'json'};
 import {quoteResult} from './encar.js';
 const fmt=n=>n==null?'—':new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(n);
 // Embedded TrueType with an explicit Unicode map: selectable, searchable Russian text.
